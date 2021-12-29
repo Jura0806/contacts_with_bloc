@@ -41,6 +41,14 @@ class _HomePageState extends State<HomePage> {
             }
             return viewOfHome(items, true);
           },
-        ));
+        ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.blueGrey.shade700,
+        child: Icon(Icons.add),
+        onPressed: (){
+          BlocProvider.of<ListContactCubit>(context).callCreatePage(context);
+        },
+      ),
+    );
   }
 }

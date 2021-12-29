@@ -11,8 +11,8 @@ class Network{
   // http APIs //
 
   // static String API_List = "/contacts";
-  // static String API_Create = "/contacts";
-  // static String API_Update = "/contacts/"; //{id}
+  static String API_Create = "/contacts";
+  static String API_Update = "/contacts/"; //{id}
   static String API_Delete = "/contacts/";  //{id}
 
   // http requests //
@@ -26,24 +26,24 @@ class Network{
     return 'Request failed with status: ${response.statusCode}.';
   }
 
-  // static Future<String> POST(String api, Map<String, String> params) async {
-  //   var uri = Uri.https(BASE, api);
-  //   var response = await post(uri, body: jsonEncode(params) );
-  //   if(response.statusCode == 200 || response.statusCode == 201){
-  //     return response.body;
-  //   }
-  //   return 'Request failed with status: ${response.statusCode}.';
-  // }
-  //
-  // static Future<String> PUT(String api, Map<String, String> params) async {
-  //   var uri = Uri.https(BASE, api);
-  //   var response = await put(uri, body: jsonEncode(params));
-  //   if(response.statusCode == 200){
-  //     return response.body;
-  //   }
-  //   return 'Request failed with status: ${response.statusCode}.';
-  // }
-  //
+  static Future<String> POST( String api, Map<String, String> params) async {
+    var uri = Uri.parse("https://61c6ec2b9031850017547287.mockapi.io/apis/$api");
+    var response = await post(uri, body: jsonEncode(params) );
+    if(response.statusCode == 200 || response.statusCode == 201){
+      return response.body;
+    }
+    return 'Request failed with status: ${response.statusCode}.';
+  }
+
+  static Future<String> PUT(String api, Map<String, String> params) async {
+    var uri = Uri.parse("https://61c6ec2b9031850017547287.mockapi.io/apis$api");
+    var response = await put(uri, body: jsonEncode(params));
+    if(response.statusCode == 200){
+      return response.body;
+    }
+    return 'Request failed with status: ${response.statusCode}.';
+  }
+
   static Future<String> Del(String api, Map<String, String> params) async {
     var uri = Uri.parse("https://61c6ec2b9031850017547287.mockapi.io/apis/$api");
     var response = await delete(uri );
